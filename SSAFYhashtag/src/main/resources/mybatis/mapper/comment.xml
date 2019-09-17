@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.hashtag.db">
+
+  <!-- post에 저장된 모든 Comment -->
+  <select id="allcomment" parameterType="java.lang.Integer" resultType="com.ssafy.hashtag.db.dto.CommentDto">
+    SELECT * FROM comment WHERE post_id=#{post_pk}
+  </select>
+
+  <!-- create comment -->
+  <insert id="create_comment" parameterType="com.ssafy.hashtag.db.dto.CommentDto">
+    INSERT INTO comment(user_id, post_id, comment, nickname)
+    VALUES(#{user_id},
+            #{post_id},
+            #{comment},
+            #{nickname})
+  </insert>
+
+  <!-- update comment -->
+  <update id="update_comment" parameterType="com.ssafy.hashtag.db.dto.CommentDto">
+    UPDATE comment
+    SET
+    comment=#{comment}
+    WHERE
+    comment_pk=#{comment_pk}
+  </update>
+
+  <!-- delete comment -->
+  <delete id="delete_comment" parameterType="java.lang.Integer">
+    DELETE FROM comment WHERE comment_pk=#{comment_pk}
+  </delete>
+
+  
+</mapper>

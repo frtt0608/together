@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.hashtag.db">
+    <insert id="addlocationBasedList" parameterType="com.ssafy.hashtag.db.dto.PostDto">
+        INSERT INTO Post(image, address, title, areacode, content_id, cat3, content_type_id, mapx, mapy) 
+        VALUES(#{image}, #{address}, #{title}, 
+        #{areacode}, #{content_id}, #{cat3}, #{content_type_id}, #{mapx}, #{mapy})
+    </insert>
+
+    <select id="AreaCode" parameterType="java.lang.Integer" resultType="com.ssafy.hashtag.db.dto.PostDto">
+        SELECT * FROM Post WHERE areacode=#{areacode}
+    </select>
+</mapper>

@@ -1,0 +1,10 @@
+# server:
+#   port: 8080 #Https port
+#   ssl:
+#     enabled: true
+#     key-store: C:\Users\multicampus\Desktop\Hashtag_together\together\SSAFYhashtag/hashtag.jks # 1번에서 생성한 Key store 경로와 파일명을 적어줍니다. 
+#     key-store-password: hashtag  # 1번에서 생성한 Key store의 비밀번호를 적어줍니다.
+#     key-password: hashtag # 1번에서 생성한 키스토어의 마지막의 키 비밀번호
+#     key-alias: hashtag # 키 스토어 별칭
+#     trust-store: C:\Users\multicampus\Desktop\Hashtag_together\together\SSAFYhashtag/hashtag.ts # 2번에서 생성한 Trust-Store 경로
+#     trust-store-password: hashtag # Trust-Store 비밀번호

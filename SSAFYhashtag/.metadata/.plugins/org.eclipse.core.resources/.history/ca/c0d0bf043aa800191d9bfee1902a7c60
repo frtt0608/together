@@ -1,0 +1,23 @@
+package com.ssafy.hashtag.db.service;
+ 
+import java.util.List;
+ 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+ 
+import com.ssafy.hashtag.db.dto.Test;
+import com.ssafy.hashtag.db.mapper.TestMapper;
+ 
+@Service
+public class TestService {
+ 
+    @Autowired
+    TestMapper testMapper;
+    
+    public List<Test> getAll() throws Exception{
+        return testMapper.getAll();
+    }
+    public void add() throws Exception {
+    	return testMapper.add();
+    }
+}

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.hashtag.db">
+
+    <!-- 로그인한 모든 유저 -->
+    <select id="alluser" resultType ="com.ssafy.hashtag.db.dto.LoginUserDto">
+        SELECT * FROM loginuser
+    </select>
+
+    <!-- 로그인한 유저들 중 특정 지역에 있는 유저만 -->
+    <select id="locate_user" parameterType="java.lang.String" resultType="com.ssafy.hashtag.db.dto.LoginUserDto">
+        SELECT * FROM loginuser WHERE location=#{location}
+    </select>
+    
+    <!-- 회원가입 -->
+    <insert id="Signup" parameterType="com.ssafy.hashtag.db.dto.UserDto">
+        INSERT INTO User(sex, email, name, nickname, phone_number, password, grade, profile_image, together, description)
+        VALUES (#{sex},
+                #{email},
+                #{name},
+                #{nickname},
+                #{phone_number},
+                #{password},
+                #{grade},
+                #{profile_image},
+                #{together},
+                #{description}  )
+    </insert>
+
+    <!-- 닉네임 중복 검사 -->
+	<select id="check_name" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select count(*) from User where nickname = #{nickname}
+    </select>
+        
+    <!-- 이메일 중복 검사 -->
+    <select id="check_email" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select count(*) from User where email = #{email}
+    </select>
+
+    <!-- 로그인 확인 -->
+    <select id="check_login" parameterType="java.lang.String" resultType="com.ssafy.hashtag.db.dto.UserDto">
+        SELECT * FROM User WHERE email=#{email}
+    </select>
+
+    <!-- 로그인 시 user 넘기기 -->
+    <select id="login" parameterType="java.lang.String" resultType="com.ssafy.hashtag.db.dto.UserDto">
+        SELECT * FROM User WHERE email=#{email} AND password=#{password}
+    </select>
+
+    <!-- 로그인 시 login_user에 데이터저장 -->
+    <insert id="login_user" parameterType="com.ssafy.hashtag.db.dto.UserDto">
+        INSERT INTO loginuser(user_id, location)
+        VALUES(#{user_pk},
+                #{location})
+    </insert>
+
+    <!-- 로그아웃 -->
+    <delete id="logout" parameterType="java.lang.Integer">
+        DELETE FROM loginuser 
+        WHERE user_id=#{user_pk}
+    </delete>
+
+    <!-- 회원 탈퇴 및 삭제 -->
+    <delete id="delete_user" parameterType="java.lang.Integer">
+        DELETE FROM User WHERE user_pk=#{user_pk}
+    </delete>
+
+    <!-- 마이페이지 -->
+    <select id="mypage" parameterType="java.lang.Integer" resultType="com.ssafy.hashtag.db.dto.UserDto">
+        SELECT user_pk, email, name, nickname, description, profile_image, phone_number FROM User WHERE user_pk=#{user_pk}
+    </select>
+
+    <!-- 회원정보 수정 -->
+    <update id="update_user" parameterType="com.ssafy.hashtag.db.dto.UserDto">
+      UPDATE User 
+      SET
+      name=#{name},
+      nickname=#{nickname},
+      phone_number=#{phone_number},
+      grade=#{grade},
+      profile_image=#{profile_image},
+      together=#{together},
+      description=#{description}
+      WHERE 
+      user_pk=#{user_pk}
+    </update>
+
+    <!-- follow -->
+    <select id="">
+
+    </select>
+
+
+    <!-- signin -->
+    <select id="signin" parameterType="java.lang.String" resultType="com.ssafy.hashtag.db.dto.UserDto">
+        SELECT * FROM user WHERE email=#{email} AND password=#{password}
+    </select>
+
+    <!-- change_upassword -->
+    <update id="change_upassword" parameterType="com.ssafy.hashtag.db.dto.UserDto">
+        UPDATE User SET password=#{password} WHERE user_pk=#{user_pk}
+    </update>
+</mapper>

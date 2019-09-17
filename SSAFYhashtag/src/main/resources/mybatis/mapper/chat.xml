@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.hashtag.db">
+  
+  <!-- 채팅방 생성 -->
+  <insert id="create" parameterType="com.ssafy.hashtag.db.dto.ChatDto">
+    INSERT INTO chat(opener_id, sex, nickname, title, description, location)
+    VALUES(#{opener_id},
+            #{sex},
+            #{nickname},
+            #{title},
+            #{description},
+            #{location})
+  </insert>
+
+  <!-- 이미 만든 채팅방이 있는지 확인 -->
+  <select id="check_create" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+    SELECT count(*)
+    FROM chat
+    WHERE opener_id=#{user_pk}
+  </select>
+
+  <!-- 채팅방 삭제 -->
+  <delete id="delete" parameterType="com.ssafy.hashtag.db.dto.ChatDto">
+    DELETE FROM chat WHERE chat_pk=#{chat_pk} AND opener_id=#{opener_id}
+  </delete>
+
+  <!-- 지역에 따른 채팅방 리스트 -->
+  <select id="locate" parameterType="java.lang.String" resultType="com.ssafy.hashtag.db.dto.ChatDto">
+    SELECT * FROM chat WHERE location=#{location}
+  </select>
+
+  <!-- 채팅방 입장 -->
+  <insert id="enter" parameterType="com.ssafy.hashtag.db.dto.ChatroomDto">
+    INSERT INTO chatroom(chat_id, user_id, nickname)
+    VALUES(#{chat_id},
+            #{user_id},
+            #{nickname})
+  </insert>
+
+  <!-- 채팅방 생성 시 chatdto 가져오기 -->
+  <select id="detail" resultType="com.ssafy.hashtag.db.dto.ChatDto">
+    SELECT * FROM chat ORDER BY chat_pk DESC LIMIT 1
+  </select>
+
+  <!-- 채팅방 생성 시 방장의 데이터 저장 -->
+  <insert id="enter_admin" parameterType="com.ssafy.hashtag.db.dto.ChatDto">
+    INSERT INTO chatroom(chat_id, user_id, nickname)
+    VALUES( #{chat_pk},
+            #{opener_id},
+            #{nickname} )
+  </insert>
+  
+  <!-- 채팅방 퇴장 -->
+  <delete id="leave" parameterType="com.ssafy.hashtag.db.dto.ChatroomDto">
+    DELETE FROM chatroom WHERE chat_id=#{chat_id} AND user_id=#{user_id}
+  </delete>
+
+  <!-- 채팅방에 설정된 성별 확인 -->
+  <select id="check_chat" parameterType="java.lang.Integer" resultType="java.lang.String">
+    SELECT sex FROM chat WHERE chat_pk=#{chat_pk}
+  </select>
+
+  <!-- 유저의 성별확인 -->
+  <select id="check_user" parameterType="java.lang.Integer" resultType="java.lang.String">
+    SELECT sex FROM user WHERE user_pk=#{user_pk}
+  </select>
+
+  <!-- 유저가 채팅방에 있는지 확인 -->
+  <select id="chat_user" parameterType="com.ssafy.hashtag.db.dto.ChatroomDto" resultType="java.lang.Integer">
+    SELECT count(*)
+    FROM chatroom
+    WHERE chat_id=#{chat_id} AND user_id=#{user_id}
+  </select>
+
+  <!-- 채팅방에 참여한 전체 유저 -->
+  <select id="user_cnt" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+    SELECT count(*)
+    FROM chatroom
+    WHERE chat_id=#{chat_pk}
+  </select>
+
+  <!-- 채팅방에 입/퇴장 시 user_cnt 수정 -->
+  <update id="user_cnt_update" parameterType="com.ssafy.hashtag.db.dto.ChatDto">
+    UPDATE chat
+    SET
+    user_cnt=#{user_cnt}
+    WHERE
+    chat_pk=#{chat_pk}
+  </update>
+</mapper>

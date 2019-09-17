@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.hashtag.db">
+
+  <select id="check" parameterType="com.ssafy.hashtag.db.dto.ScheduleDto" resultType="java.lang.Integer">
+    SELECT count(*) FROM schedule WHERE post_id=#{post_id}
+  </select>
+
+  <insert id="add_schedule" parameterType="com.ssafy.hashtag.db.dto.ScheduleDto">
+    INSERT INTO schedule(user_id, post_id, schedule_title, schedule_image, start_date, end_date, start_time, end_time)
+    VALUES (#{user_id},
+            #{post_id},
+            #{schedule_title},
+            #{schedule_image},
+            #{start_date},
+            #{end_date},
+            #{start_time},
+            #{end_time})
+  </insert>
+
+  <delete id="delete_schedule" parameterType="java.lang.Integer">
+    DELETE FROM schedule WHERE schedule_pk=#{schedule_pk}
+  </delete>
+
+  <select id="allschedule" parameterType="java.lang.Integer" resultType="com.ssafy.hashtag.db.dto.ScheduleDto">
+    SELECT * FROM schedule WHERE user_id=#{user_pk}
+  </select>
+
+</mapper>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.hashtag.db">
+    <!-- 지역코드로 post조회 -->
+    <select id="Areacode" parameterType="java.lang.Integer" resultType="com.ssafy.hashtag.db.dto.PostDto">
+        SELECT * FROM Post WHERE areacode=#{areacode}
+    </select>
+
+    <!-- post에 저장된 모든 score -->
+    <select id="allScore" parameterType="java.lang.Integer" resultType="com.ssafy.hashtag.db.dto.ScoreDto">
+        SELECT * FROM score WHERE post_id=#{post_pk}
+    </select>
+
+    <!-- Create score -->
+    <insert id="create_score" parameterType="com.ssafy.hashtag.db.dto.ScoreDto">
+        INSERT INTO score(user_id, post_id, score)
+        VALUES (#{user_id},
+                #{post_id},
+                #{score})
+    </insert>
+
+    <!-- Update score -->
+    <update id="update_score" parameterType="com.ssafy.hashtag.db.dto.ScoreDto">
+        UPDATE Score
+        SET
+        score=#{score}
+        WHERE
+        score_pk=#{score_pk}
+    </update>
+
+    <!-- Delete score -->
+    <delete id="delete_score" parameterType="java.lang.Integer">
+        DELETE FROM score WHERE score_pk=#{score_pk}
+    </delete>
+
+    <!-- Post like -->
+    <insert id="post_like" parameterType="com.ssafy.hashtag.db.dto.PostLikeDto">
+        INSERT INTO post_like(user_id, post_id)
+        VALUES(#{user_id},
+                #{post_id})
+    </insert>
+
+    <delete id="post_unlike" parameterType="com.ssafy.hashtag.db.dto.PostLikeDto">
+        DELETE FROM post_like
+        WHERE user_id=#{user_id} AND post_id=#{post_id}
+    </delete>
+
+    <select id="check_like" parameterType="com.ssafy.hashtag.db.dto.PostLikeDto" resultType="java.lang.Integer">
+        SELECT count(*) 
+        FROM post_like 
+        WHERE user_id=#{user_id} AND post_id=#{post_id}
+    </select>
+
+    <!-- Post cart -->
+    <insert id="post_cart" parameterType="com.ssafy.hashtag.db.dto.PostCartDto">
+        INSERT INTO post_cart(user_id, post_id)
+        VALUES(#{user_id},
+                #{post_id})
+    </insert>
+
+    <delete id="post_uncart" parameterType="com.ssafy.hashtag.db.dto.PostCartDto">
+        DELETE FROM post_cart
+        WHERE user_id=#{user_id} AND post_id=#{post_id}
+    </delete>
+
+    <select id="check_cart" parameterType="com.ssafy.hashtag.db.dto.PostCartDto" resultType="java.lang.Integer">
+        SELECT count(*) 
+        FROM post_cart
+        WHERE user_id=#{user_id} AND post_id=#{post_id}
+    </select>
+
+    <select id="find_post" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+        SELECT post_id
+        FROM post_cart
+        WHERE user_id=#{user_pk}
+    </select>
+
+    <select id="Detail_post" parameterType="java.lang.Integer" resultType="com.ssafy.hashtag.db.dto.PostDto">
+            SELECT *
+            FROM post
+            WHERE post_pk=#{post_pk}
+    </select>
+
+    <!-- postDB 만들때 사용 -->
+    <!-- <insert id="addlocationBasedList" parameterType="com.ssafy.hashtag.db.dto.PostDto">
+        INSERT INTO Post(image, address, title, areacode, content_id, cat1, cat2, cat3, content_type_id, mapx, mapy) 
+        VALUES (#{image}, 
+                #{address},
+                #{title}, 
+                #{areacode}, 
+                #{content_id}, 
+                #{cat1}, 
+                #{cat2}, 
+                #{cat3}, 
+                #{content_type_id}, 
+                #{mapx}, 
+                #{mapy} )
+    </insert> -->
+</mapper>

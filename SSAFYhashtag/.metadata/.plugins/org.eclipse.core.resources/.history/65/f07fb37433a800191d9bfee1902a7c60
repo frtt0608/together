@@ -1,0 +1,14 @@
+package com.ssafy.hashtag.db.mapper;
+ 
+import java.util.List;
+ 
+import com.simplify.sample.db.dto.Test;
+ 
+public interface TestMapper {
+ 
+    public List<Test> getAll() throws Exception;
+    
+}
+
+
+출처: https://4urdev.tistory.com/46?category=761752 [Simplify]
