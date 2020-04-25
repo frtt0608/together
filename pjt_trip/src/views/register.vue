@@ -137,7 +137,7 @@ export default {
   methods: {
     submit(){
         var key='rbssLvuPaumnRlgRCPsgU5IeLlHAf5nHHGU8P3JVSYqJvgSFL8l%2FJbCYNE9zVd5Je%2BFoFlSBFo%2Fochd7h97a%2Fg%3D%3D'
-        var spring_url = 'http://192.168.31.84:8080/api/user/signup/'
+        var spring_url = 'http://192.168.43.242:8080/api/user/signup/'
         alert(this.form.email)
 
         axios.post(spring_url,{
@@ -189,7 +189,7 @@ export default {
     },
     chekcid(){
 
-    var spring_url='http://192.168.31.84:8080/api/user/check_email'
+    var spring_url='http://192.168.43.242:8080/api/user/check_email'
 
     axios.post(spring_url,{email:this.form.email})
     .then(response =>{

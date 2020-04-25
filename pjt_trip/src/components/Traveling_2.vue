@@ -207,7 +207,7 @@ export default {
         for (let [key, value] of Object.entries(this.areas)) {
           //선택한 지역 분류data에서 번호 불러오기
           if (area === value) {
-            var spring_url = 'http://192.168.31.84:8080/api/post/areacode/' + key
+            var spring_url = 'http://192.168.43.242:8080/api/post/areacode/' + key
             axios.get(spring_url).then((res) => {
               console.log(1)
               console.log(res)
@@ -269,7 +269,7 @@ export default {
       this.load = true
       this.type = '대분류 선택'
 
-      var url = 'http://192.168.31.84:8080/api/FindDust/' + city
+      var url = 'http://192.168.43.242:8080/api/FindDust/' + city
       axios.get(url).then((res) => {
         console.log(res.data)
         console.log(res.data.length)
@@ -352,7 +352,7 @@ export default {
         for (let [key, value] of Object.entries(this.areas)) {
           //선택한 지역 분류data에서 번호 불러오기
           if (area === value) {
-            var spring_url = 'http://192.168.31.84:8080/api/post/areacode/' + key
+            var spring_url = 'http://192.168.43.242:8080/api/post/areacode/' + key
             axios.get(spring_url).then((res) => {
               console.log('미세지역돌리기')
               console.log(res)
@@ -450,7 +450,7 @@ export default {
 
       // alert(index.props.lat+" "+index.props.lon)
 
-      var url = 'http://192.168.31.84:8080/api/FindHospital/' + index.props.lon + '/' + index.props.lat
+      var url = 'http://192.168.43.242:8080/api/FindHospital/' + index.props.lon + '/' + index.props.lat
       console.log(url)
       axios.get(url).then((res) => {
         console.log(res.data)

@@ -31,7 +31,7 @@ export default {
    methods : {
      created(){
        this.id = this.$route.params.id;
-       var spring_url = 'http://192.168.31.84:8080/api/border/'+this.id
+       var spring_url = 'http://192.168.43.242:8080/api/border/'+this.id
        axios.get(spring_url).then((res)=>{
          this.topic_notices=res.data;
      })

@@ -92,7 +92,7 @@ export default {
   },
   methods: {
     deletea (spk) {
-      var url = 'http://192.168.31.84:8080/api/schedule/' + spk + '/delete'
+      var url = 'http://192.168.43.242:8080/api/schedule/' + spk + '/delete'
       axios.post(url)
       alert("삭제 되었습니다.")
       location.reload();

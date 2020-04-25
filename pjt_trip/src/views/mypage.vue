@@ -137,7 +137,7 @@ export default {
   },
   methods: {
     getUserInfo () {
-      var swg_addr = 'http://192.168.31.84:8080/api/user/'
+      var swg_addr = 'http://192.168.43.242:8080/api/user/'
       var user_key = this.user_pk
       var url = swg_addr + user_key
 
@@ -156,7 +156,7 @@ export default {
     },
     submit () {
       if (this.$refs.form.validate()) {
-        var URL = 'http://192.168.31.84:8080/api/user/' + this.user.user_pk + '/update'
+        var URL = 'http://192.168.43.242:8080/api/user/' + this.user.user_pk + '/update'
         axios.post(URL, this.user)
           .then(res => {
             console.log(this.user)

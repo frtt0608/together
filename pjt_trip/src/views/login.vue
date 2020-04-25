@@ -73,7 +73,7 @@ export default {
  methods: {
    submit () {
      var key = 'rbssLvuPaumnRlgRCPsgU5IeLlHAf5nHHGU8P3JVSYqJvgSFL8l%2FJbCYNE9zVd5Je%2BFoFlSBFo%2Fochd7h97a%2Fg%3D%3D'
-     var spring_url = 'http://192.168.31.84:8080/api/user/login/'
+     var spring_url = 'http://192.168.43.242:8080/api/user/login/'
      alert(this.login.email)
      axios.post(spring_url, {
        email: this.login.email,

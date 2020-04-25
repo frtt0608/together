@@ -28,7 +28,7 @@ export default {
    getdata(){
      if(this.$session.get('lo')){this.user_toggle=true}
      // this.user_data = this.$session.get('lo')
-     // var spring_url = 'http://192.168.31.84:8080/api/user/' + this.user_data.user_pk
+     // var spring_url = 'http://192.168.43.242:8080/api/user/' + this.user_data.user_pk
      // axios.post(spring_url,{user_pk: this.user_data.user_pk})
      //  .then(response=>{
      //    this.user_toggle=true
@@ -37,7 +37,7 @@ export default {
      //  })
   },
   deleteId(){
-    var spring_url = 'http://192.168.31.84:8080/api/user/' + this.$session.get('lo').user_pk +'/logout'
+    var spring_url = 'http://192.168.43.242:8080/api/user/' + this.$session.get('lo').user_pk +'/logout'
     axios.post(spring_url)
     this.$session.remove('lo')
     this.user_toggle=false;

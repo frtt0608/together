@@ -108,7 +108,7 @@ export default {
   methods: {
     gettdata () {
       this.id = this.$session.get('lo').user_pk
-      var url = 'http://192.168.31.84:8080/api/post/' + this.id + '/incart'
+      var url = 'http://192.168.43.242:8080/api/post/' + this.id + '/incart'
       axios.post(url).then(res => {
         console.log(res.data)
         this.items = res.data
@@ -164,7 +164,7 @@ export default {
       // this.trip_inform.push(this.post);
     },
     setschedule () {
-      var url = 'http://192.168.31.84:8080/api/schedule/add'
+      var url = 'http://192.168.43.242:8080/api/schedule/add'
       axios.post(url, {
         user_id: this.id,
         post_id: this.post.post_pk,
@@ -186,7 +186,7 @@ export default {
     },
     getschedule () {
 
-      var url = 'http://192.168.31.84:8080/api/schedule/' + this.$session.get('lo').user_pk
+      var url = 'http://192.168.43.242:8080/api/schedule/' + this.$session.get('lo').user_pk
 
       axios.post(url).then(res => {
         var res_type = []

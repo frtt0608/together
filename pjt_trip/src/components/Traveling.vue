@@ -161,7 +161,7 @@ import index from '@/views/index'
           this.login_users = []
           var city_name = Traveling.props.city
           console.log(Traveling.props.city)
-          var spring_url = 'http://192.168.31.84:8080/api/user/locate'
+          var spring_url = 'http://192.168.43.242:8080/api/user/locate'
           axios.post(spring_url, {
             location: city_name,
             loginuser_pk: 0,
@@ -199,7 +199,7 @@ import index from '@/views/index'
           for(let [key, value] of Object.entries(this.areas)){
             //선택한 지역 분류data에서 번호 불러오기
             if(area === value){
-              var spring_url = 'http://192.168.31.84:8080/api/post/areacode/'+key
+              var spring_url = 'http://192.168.43.242:8080/api/post/areacode/'+key
               axios.get(spring_url).then((res)=>{
                 console.log(1)
                 console.log(res)
@@ -257,7 +257,7 @@ import index from '@/views/index'
         this.hospital_click= false
         this.load=true
         this.type='대분류 선택'
-        var url = 'http://192.168.31.84:8080/api/FindDust/' + city
+        var url = 'http://192.168.43.242:8080/api/FindDust/' + city
         axios.get(url).then((res)=>{
           console.log(res.data)
           console.log(res.data.length)
@@ -330,7 +330,7 @@ import index from '@/views/index'
           for(let [key, value] of Object.entries(this.areas)){
             //선택한 지역 분류data에서 번호 불러오기
             if(area === value){
-              var spring_url = 'http://192.168.31.84:8080/api/post/areacode/'+key
+              var spring_url = 'http://192.168.43.242:8080/api/post/areacode/'+key
               axios.get(spring_url).then((res)=>{
                 console.log('미세지역돌리기')
                 console.log(res)
@@ -366,7 +366,7 @@ import index from '@/views/index'
             // console.log(position.coords.latitude + ' ' + position.coords.longitude);
             // console.log(index.lat+' '+ index.lon);
             // console.log(index.methods)
-            var url = 'http://192.168.31.84:8080/api/FindHospital/' + position.coords.longitude + '/' + position.coords.latitude
+            var url = 'http://192.168.43.242:8080/api/FindHospital/' + position.coords.longitude + '/' + position.coords.latitude
             console.log(url)
             axios.get(url).then((res) => {
               console.log(res.data)

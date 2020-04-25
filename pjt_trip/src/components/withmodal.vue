@@ -216,7 +216,7 @@ import withmodal from '@/components/withmodal'
     },
     methods:{
       create_chat(){
-        var url = 'http://192.168.31.84:8080/api/chat/create'
+        var url = 'http://192.168.43.242:8080/api/chat/create'
         axios.post(url,{
                     description:this.description, title:this.title,
                     location:Traveling.props.city, user_id:this.$session.get('lo').user_pk,
@@ -236,7 +236,7 @@ import withmodal from '@/components/withmodal'
                     });
       },
       chat_lists(){
-        var chat_url="http://192.168.31.84:8080/api/chat/locate/"
+        var chat_url="http://192.168.43.242:8080/api/chat/locate/"
         var city_name = Traveling.props.city
         var URL = chat_url + city_name
         axios.get(URL).then((res)=>{
@@ -246,8 +246,8 @@ import withmodal from '@/components/withmodal'
           this.chat_users={}
           // for(var [index, chatroom] of Object.entries(res.data)){
           //   // console.log(chatroom.chat_pk)
-          //   // var chat_users_url="http://192.168.31.84:8080/api/chat/" + chatroom.chat_pk
-          //   axios.get("http://192.168.31.84:8080/api/chat/" + chatroom.chat_pk).then((response)=>{
+          //   // var chat_users_url="http://192.168.43.242:8080/api/chat/" + chatroom.chat_pk
+          //   axios.get("http://192.168.43.242:8080/api/chat/" + chatroom.chat_pk).then((response)=>{
           //     // console.log(chatroom.chat_pk)
           //     console.log(Object.keys(response.data)[0])
           //     console.log(response.data[Object.keys(response.data)[0]])
@@ -261,7 +261,7 @@ import withmodal from '@/components/withmodal'
       delete_chat(chat_pk,num){
         // creater가 채팅방 삭제하기
         console.log(chat_pk,num)
-        var url = 'http://192.168.31.84:8080/api/chat/' + chat_pk + '/delete/'+ num
+        var url = 'http://192.168.43.242:8080/api/chat/' + chat_pk + '/delete/'+ num
         axios.get(url).then((res)=>{
           console.log('삭제')
           alert("삭제 되었습니다")
@@ -272,7 +272,7 @@ import withmodal from '@/components/withmodal'
         // user가 채팅방 참여하기
         // 192.168.31.57:8000
         this.join_click = true
-        var url ='http://192.168.31.84:8080/api/chat/' + chat_pk + '/enter/' + user_pk
+        var url ='http://192.168.43.242:8080/api/chat/' + chat_pk + '/enter/' + user_pk
         var chat_url='http://192.168.31.57:8000/'+ chat_pk
         axios.post(url,{nickname:this.$session.get('lo').nickname, chat_id:chat_pk, user_id: user_pk}).then((res)=>{
           console.log(res)
@@ -291,7 +291,7 @@ import withmodal from '@/components/withmodal'
       out_chat(chat_pk,user_pk){
         //user가 채팅방 나가기
         console.log('나가기',chat_pk,user_pk)
-        var url ='http://192.168.31.84:8080/api/chat/' + chat_pk + '/leave/' + user_pk
+        var url ='http://192.168.43.242:8080/api/chat/' + chat_pk + '/leave/' + user_pk
         axios.get(url).then((res)=>{
           console.log(res)
           this.join_click=false
@@ -304,7 +304,7 @@ import withmodal from '@/components/withmodal'
           this.login_users = []
           var city_name = Traveling.props.city
           console.log(Traveling.props.city)
-          var spring_url = 'http://192.168.31.84:8080/api/user/locate'
+          var spring_url = 'http://192.168.43.242:8080/api/user/locate'
           axios.post(spring_url, {
             location: city_name,
             loginuser_pk: 0,

@@ -109,7 +109,7 @@ export default {
       if (this.$refs.form.validate()) {
         this.user.password = this.pw1
         this.user.user_pk = this.user_pk
-        var URL = 'http://192.168.31.84:8080/api/user/' + this.user_pk + '/changepassword'
+        var URL = 'http://192.168.43.242:8080/api/user/' + this.user_pk + '/changepassword'
         axios.post(URL, this.user)
           .then(res => {
             console.log(this.user)

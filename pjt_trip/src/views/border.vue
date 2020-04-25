@@ -94,7 +94,7 @@ export default {
        }
      },
      created(){
-       var spring_url = 'http://192.168.31.84:8080/api/border/'
+       var spring_url = 'http://192.168.43.242:8080/api/border/'
        axios.post(spring_url).then((res)=>{
             this.topic_articles=res.data
      })

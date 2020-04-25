@@ -131,7 +131,7 @@ export default {
         for(let [key, value] of Object.entries(tour.props.areas)){
           //선택한 지역 분류data에서 번호 불러오기
           if(area === value){
-            var spring_url = 'http://192.168.31.84:8080/api/post/areacode/'+key
+            var spring_url = 'http://192.168.43.242:8080/api/post/areacode/'+key
             axios.get(spring_url).then((res)=>{
               console.log(1)
               console.log(res)

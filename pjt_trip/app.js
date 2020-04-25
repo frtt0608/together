@@ -36,7 +36,7 @@ app.get('/create',function(req,res){
   if (rooms.length){
     for(var room in rooms){
       console.log(room)
-      if(room === req.query.room){console.log('잇음')}
+      if(room === req.query.room){console.log('있음')}
       else{
         rooms.push(req.query.room)
         creaters[req.query.creater]=req.query.creater_id
@@ -101,15 +101,15 @@ io.sockets.on('connection', function (socket) {
 		// update list of users in chat, client-side
 		io.sockets.emit('updateusers', usernames);
     if(socket.username in creaters === true){
-      // xhr.open('GET','http://192.168.31.84:8080/api/chat/' + socket.room + '/delete/'+ creaters[socket.username]');
+      // xhr.open('GET','http://192.168.43.242:8080/api/chat/' + socket.room + '/delete/'+ creaters[socket.username]');
       // xhr.setRequestHeader('Content-type',"application/json")
       // xhr.send(data)
       // console.log('spring전송')
-      // axios.get('http://192.168.31.84:8080/api/chat/' + socket.room + '/delete/'+ creaters[socket.username]')
+      // axios.get('http://192.168.43.242:8080/api/chat/' + socket.room + '/delete/'+ creaters[socket.username]')
       // io.sockets.emit('creater_out',socket.room,creaters[socket.username]);
-      // var response_out = http.getUrl('http://192.168.31.84:8080/api/chat/' + socket.room + '/delete/'+ creaters[socket.username], {format: 'xmljs'})
+      // var response_out = http.getUrl('http://192.168.43.242:8080/api/chat/' + socket.room + '/delete/'+ creaters[socket.username], {format: 'xmljs'})
       // console.log(response_out)
-      request('http://192.168.31.84:8080/api/chat/' + socket.room + '/delete/'+ creaters[socket.username], function (error, response, body) {
+      request('http://192.168.43.242:8080/api/chat/' + socket.room + '/delete/'+ creaters[socket.username], function (error, response, body) {
         //callback
         });
       delete creaters[socket.username];
@@ -118,7 +118,7 @@ io.sockets.on('connection', function (socket) {
     }
     else if(socket.username in creaters === false){
       console.log(1111)
-      request('http://192.168.31.84:8080/api/chat/' + socket.room + '/leave/'+ user_ids[socket.username], function (error, response, body) {
+      request('http://192.168.43.242:8080/api/chat/' + socket.room + '/leave/'+ user_ids[socket.username], function (error, response, body) {
         //callback
         });
       delete user_ids[socket.username];

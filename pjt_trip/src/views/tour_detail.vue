@@ -229,7 +229,7 @@ export default {
     cdelete(cpk){
 
       var c_pk=cpk;
-      var url="http://192.168.31.84:8080/api/post/"+c_pk+'/delete_comment'
+      var url="http://192.168.43.242:8080/api/post/"+c_pk+'/delete_comment'
       axios.post(url).then(res=>{
         alert(res.data)
         location.reload();
@@ -237,7 +237,7 @@ export default {
       })
     },
     api_img(){
-      var img_url="http://192.168.31.84:8080/api/SearchImage/"
+      var img_url="http://192.168.43.242:8080/api/SearchImage/"
       var value = this.detail_form.title
       console.log(value, "로 이미지 검색")
       var URL = img_url + this.detail_form.title
@@ -247,7 +247,7 @@ export default {
       })
     },
     score_lists(){
-      var score_url="http://192.168.31.84:8080/api/post/"
+      var score_url="http://192.168.43.242:8080/api/post/"
       var value=this.detail_form.post_pk
       var URL=score_url + value + '/score'
       axios.get(URL).then((res)=>{
@@ -269,7 +269,7 @@ export default {
       })
     },
     comment_lists(){
-      var comment_url="http://192.168.31.84:8080/api/post/"
+      var comment_url="http://192.168.43.242:8080/api/post/"
       var value=this.detail_form.post_pk
       var URL = comment_url + value + '/comment'
       axios.get(URL).then((res)=>{
@@ -282,7 +282,7 @@ export default {
       })
     },
     score_fun_delete(){
-      var score_url="http://192.168.31.84:8080/api/post/"
+      var score_url="http://192.168.43.242:8080/api/post/"
       var value=this.score_pk
       var URL=score_url + value + '/delete_score'
       axios.get(URL).then(()=>{
@@ -296,7 +296,7 @@ export default {
       }else{
         this.heart_toggle=true
       }
-      var like_url = "http://192.168.31.84:8080/api/post/"
+      var like_url = "http://192.168.43.242:8080/api/post/"
       var value = this.detail_form.post_pk
       var URL = like_url + value + '/like'
       axios.post(URL,{user_id : this.$session.get('lo').user_pk, post_id : value }).then((res) =>{
@@ -305,7 +305,7 @@ export default {
       })
     },
     schedule_fun(){
-      var like_url = "http://192.168.31.84:8080/api/post/"
+      var like_url = "http://192.168.43.242:8080/api/post/"
       var value = this.detail_form.post_pk
       var URL = like_url + value + '/cart'
       axios.post(URL,{user_id : this.$session.get('lo').user_pk, post_id : value }).then((res) =>{
@@ -320,7 +320,7 @@ export default {
       }
       else{
         if(this.$session.get('lo')) {
-        var score_url="http://192.168.31.84:8080/api/post/"
+        var score_url="http://192.168.43.242:8080/api/post/"
         var value=this.detail_form.post_pk
         var URL=score_url + value + '/create_score'
         axios.post(URL,{score: this.rating, user_id: this.$session.get('lo').user_pk, post_id:this.detail_form.post_pk}).then((res)=>{
@@ -334,7 +334,7 @@ export default {
     comment_fun(){
 
       if(this.message){
-        var comment_url='http://192.168.31.84:8080/api/post/'
+        var comment_url='http://192.168.43.242:8080/api/post/'
         var value=this.detail_form.post_pk
         var URL = comment_url +value + '/create_comment'
         axios.post(URL,{comment:this.message, nickname:this.$session.get('lo').nickname, user_id: this.$session.get('lo').user_pk, post_id:this.detail_form.post_pk}).then((res)=>{
@@ -349,7 +349,7 @@ export default {
     this.id = this.$route.params.id
     this.id_2=this.$route.params.id_2
     console.log(this.$route.params)
-    var spring_url = 'http://192.168.31.84:8080/api/post/areacode/' + Number(this.id_2)
+    var spring_url = 'http://192.168.43.242:8080/api/post/areacode/' + Number(this.id_2)
     axios.get(spring_url).then((res)=>{
       console.log(res.data)
       for ( var [index,res_detail] of Object.entries(res.data) ){
@@ -360,11 +360,11 @@ export default {
           this.api_img();
           this.score_lists();
           this.comment_lists();
-          axios.post("http://192.168.31.84:8080/api/post/"+this.detail_form.post_pk+"/checklike",{user_id : this.$session.get('lo').user_pk, post_id:this.detail_form.post_pk}).then((ress)=>{
+          axios.post("http://192.168.43.242:8080/api/post/"+this.detail_form.post_pk+"/checklike",{user_id : this.$session.get('lo').user_pk, post_id:this.detail_form.post_pk}).then((ress)=>{
             console.log('좋아요체크',ress.data)
             this.click_like=ress.data
           });
-          axios.post("http://192.168.31.84:8080/api/post/"+this.detail_form.post_pk+"/checkcart",{user_id : this.$session.get('lo').user_pk, post_id:this.detail_form.post_pk}).then((ress)=>{
+          axios.post("http://192.168.43.242:8080/api/post/"+this.detail_form.post_pk+"/checkcart",{user_id : this.$session.get('lo').user_pk, post_id:this.detail_form.post_pk}).then((ress)=>{
             console.log('카트체크',ress.data)
             this.click_schedule=ress.data
           });
