@@ -34,11 +34,7 @@ public class HospitalController {
     
     @RequestMapping(value = "/FindHospital/{XPos}/{YPos}", method = RequestMethod.GET)
     public ResponseEntity<List<HospitalDto>> FindHospital(@PathVariable double XPos, @PathVariable double YPos) throws Exception {
-        logger.info("****************FindHospital HospitalController**********************");
-        System.out.println(XPos);
-        System.out.println(YPos);
         List<HospitalDto> lists = hospitalservice.getInfo(XPos, YPos);
-        System.out.println(lists.toString());
         return new ResponseEntity<List<HospitalDto>>(lists, HttpStatus.OK);
     }
 

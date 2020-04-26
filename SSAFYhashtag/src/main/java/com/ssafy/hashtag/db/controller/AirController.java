@@ -34,7 +34,6 @@ public class AirController {
     
     @RequestMapping(value = "/FindDust/{city}", method = RequestMethod.GET)
     public ResponseEntity<List<AirDto>> FindDust(@PathVariable String city) throws Exception {
-        System.out.println("****************FindDust AirController**********************");
         List<AirDto> lists = airservice.getInfo(city);
         
         return new ResponseEntity<List<AirDto>>(lists, HttpStatus.OK);

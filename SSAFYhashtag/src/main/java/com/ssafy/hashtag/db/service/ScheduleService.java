@@ -16,10 +16,8 @@ public class ScheduleService {
   private ScheduleDao scheduledao;
 
   public String Add_schedule(ScheduleDto scheduledto) throws Exception {
-    System.out.println("****************add ScheduleService**********************");
     String msg="일정이 등록되었습니다.";
     int cnt = scheduledao.Check(scheduledto);
-    System.out.println(cnt);
 
     if (cnt >= 1) {
       msg="이미 일정에 있습니다.";
@@ -31,14 +29,10 @@ public class ScheduleService {
   }
 
   public List<ScheduleDto> allSchedule(int user_pk) throws Exception {
-    System.out.println("****************all ScheduleService**********************");
-
     return scheduledao.allSchedule(user_pk);
   }
 
   public void Delete_schedule(int schedule_pk) throws Exception {
-    System.out.println("****************delete ScheduleService**********************");
-
     scheduledao.Delete_schedule(schedule_pk);
   }
 }

@@ -80,20 +80,4 @@
             FROM post
             WHERE post_pk=#{post_pk}
     </select>
-
-    <!-- postDB 만들때 사용 -->
-    <!-- <insert id="addlocationBasedList" parameterType="com.ssafy.hashtag.db.dto.PostDto">
-        INSERT INTO Post(image, address, title, areacode, content_id, cat1, cat2, cat3, content_type_id, mapx, mapy) 
-        VALUES (#{image}, 
-                #{address},
-                #{title}, 
-                #{areacode}, 
-                #{content_id}, 
-                #{cat1}, 
-                #{cat2}, 
-                #{cat3}, 
-                #{content_type_id}, 
-                #{mapx}, 
-                #{mapy} )
-    </insert> -->
 </mapper>

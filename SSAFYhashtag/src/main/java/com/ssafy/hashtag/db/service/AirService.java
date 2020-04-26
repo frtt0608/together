@@ -29,8 +29,6 @@ public class AirService {
 		lists = insertInfoJson(city);
 
 		for (int i = 0; i < lists.size(); i++) {
-			// System.out.println("*****************add in for***********************");
-
 			Map<String, Object> temp = lists.get(i);
 
 			infos.add(new AirDto());
@@ -144,8 +142,6 @@ public class AirService {
 
 			dust_info.add(tempmap);
 		}
-
 		return dust_info;
 	}
-
 }

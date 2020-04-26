@@ -18,19 +18,15 @@ public class UserService {
     private UserDao userdao;
 
     public List<LoginUserDto> allUser() throws Exception {
-        System.out.println("****************allUser userservice**********************");
-
         return userdao.allUser();
     }
 
     public List<LoginUserDto> Locate_user(String location) throws Exception {
-        System.out.println("****************Locate_user userservice**********************");
         List<LoginUserDto> users = userdao.Locate_user(location);
         return users;
     }
     
     public String Signup(UserDto userdto) throws Exception {
-        System.out.println("****************signup userservice**********************");
 
         if (userdao.Check_email(userdto.getEmail()) == 0 && userdao.Check_name(userdto.getNickname()) == 0) {
             userdao.Signup(userdto);
@@ -41,8 +37,6 @@ public class UserService {
     }
 
     public String Check_name(@RequestBody UserDto userdto) throws Exception {
-        System.out.println("****************Check_name userservice**********************");
-        System.out.println(userdto.getNickname());
         int flag = userdao.Check_name(userdto.getNickname());
         String msg;
 
@@ -59,8 +53,6 @@ public class UserService {
     }
 
     public String Check_email(@RequestBody UserDto userdto) throws Exception {
-        System.out.println("****************Check_email userservice**********************");
-        System.out.println(userdto.getEmail());
         int flag = userdao.Check_email(userdto.getEmail());
         String msg;
 
@@ -77,7 +69,6 @@ public class UserService {
     }
 
     public UserDto Signin(UserDto userdto) throws Exception {
-        System.out.println("****************signin userservice**********************");
         String email;
         String pw;
         int code;
@@ -103,7 +94,6 @@ public class UserService {
     }
 
     public UserDto Login(UserDto userdto) throws Exception {
-        System.out.println("****************login userservice**********************");
         String email;
         String pw;
 
@@ -125,30 +115,24 @@ public class UserService {
     }
 
     public void Logout(int user_pk) throws Exception {
-        System.out.println("****************logout userservice**********************");
         userdao.Logout(user_pk);
     }
 
     public String Update_user(UserDto userdto) throws Exception {
-        System.out.println("****************Update_user userservice**********************");
         userdao.Update_user(userdto);
         return "회원정보가 수정되었습니다.";
     }
 
     public void Delete_user(int user_pk) throws Exception {
-        System.out.println("****************delete userservice**********************");
         userdao.Delete_user(user_pk);
     }
 
     public UserDto Mypage(int user_pk) throws Exception {
-        System.out.println("****************mypage userservice**********************");
         return userdao.Mypage(user_pk);
     }
 
 	public String Change_uPassword(UserDto userdto) {
-        System.out.println("****************Change_uPassword userservice**********************");
         userdao.Change_uPassword(userdto);
         return "비밀번호가 변경되었습니다.";
     }
-
 }

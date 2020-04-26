@@ -23,19 +23,16 @@ public class BorderDao implements BorderMapper {
 
   @Override
   public List<BorderDto> allBorder() throws Exception {
-    System.out.println("**************** allBorder BorderDao **********************");
     return sqlSession.selectList(ns + "allBorder");
   }
 
   @Override
   public void Create_border(BorderDto borderdto) throws Exception {
-    System.out.println("**************** create BorderDao **********************");
     sqlSession.insert(ns + "create_border", borderdto);
   }
 
   @Override
   public BorderDto Detail_border(int border_pk) throws Exception {
-    System.out.println("**************** detail BorderDao **********************");
     BorderDto border = sqlSession.selectOne(ns + "detail_border", border_pk);
     border.setHits(border.getHits() + 1);
     sqlSession.update(ns + "hit_border", border);
@@ -44,13 +41,11 @@ public class BorderDao implements BorderMapper {
 
   @Override
   public void Update_border(BorderDto borderdto) throws Exception {
-    System.out.println("**************** update BorderDao **********************");
     sqlSession.update(ns + "update_border", borderdto);
   }
 
   @Override
   public void Delete_border(int border_pk) throws Exception {
-    System.out.println("**************** delete BorderDao **********************");
     sqlSession.delete(ns + "delete_border", border_pk);
   }
 }

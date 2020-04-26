@@ -9,7 +9,6 @@ import com.ssafy.hashtag.db.dto.ScoreDto;
 
 public interface PostMapper {
  
-    // public List<Test> Getall() throws Exception;
     public void addlocationBasedList(PostDto postdto) throws Exception;
     public List<PostDto> Areacode(int areacode) throws Exception;
     

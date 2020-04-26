@@ -33,7 +33,7 @@ public class SwaggerConfig {
     return new ApiInfoBuilder().title("SSAFY API")
               .description("SSAFY API Reference for Developers")
               .termsOfServiceUrl("https://edu.ssafy.com")
-              .contact("ssafy@ssafy.com").license("SSAFY License")
+              .license("SSAFY License")
               .licenseUrl("ssafy@ssafy.com")
               .version("1.0")
               .build();

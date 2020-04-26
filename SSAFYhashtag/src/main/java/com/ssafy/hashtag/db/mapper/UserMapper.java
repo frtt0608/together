@@ -12,10 +12,6 @@ public interface UserMapper {
     public List<LoginUserDto> Locate_user(String location) throws Exception;
 
     public void Signup(UserDto userdto) throws Exception;
-    // public int Check_name(String name) throws Exception;
-    // public int Check_email(String email) throws Exception;
-    // public ConfirmMsgDto(String Confirm, String data) throws Exception;
-    // public void Check_login(String email) throws Exceoption;
     public UserDto Login(UserDto userdto) throws Exception;
     public void Logout(int user_pk) throws Exception;
     public void Delete_user(int user_pk) throws Exception;

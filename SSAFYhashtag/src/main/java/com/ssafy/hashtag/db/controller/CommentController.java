@@ -32,17 +32,13 @@ public class CommentController {
   // Comment CRUD
   @RequestMapping(value = "/{post_pk}/comment", method = RequestMethod.GET)
   public ResponseEntity<List<CommentDto>> allComment(@PathVariable int post_pk) throws Exception {
-    System.out.println("****************all_comment Controller**********************");
-
     List<CommentDto> comments = commentservice.allComment(post_pk);
-    System.out.println(comments.toString());
     return new ResponseEntity<List<CommentDto>>(comments, HttpStatus.OK);
   }
 
   @RequestMapping(value = "/{post_pk}/create_comment", method = RequestMethod.POST)
   public ResponseEntity<String> Create_comment(@RequestBody CommentDto commentdto, @PathVariable int post_pk)
       throws Exception {
-    System.out.println("****************create_comment Controller**********************");
     String message = "create comment";
     commentdto.setPost_id(post_pk);
     commentservice.Create_comment(commentdto);
@@ -53,7 +49,6 @@ public class CommentController {
   @RequestMapping(value = "/{comment_pk}/update_comment", method = RequestMethod.POST)
   public ResponseEntity<String> Update_comment(@RequestBody CommentDto commentdto, @PathVariable int comment_pk)
       throws Exception {
-    System.out.println("****************update_comment Controller**********************");
     commentservice.Update_comment(commentdto);
     String message = "update comment";
 
@@ -62,7 +57,6 @@ public class CommentController {
 
   @RequestMapping(value = "/{comment_pk}/delete_comment", method = RequestMethod.POST)
   public ResponseEntity<String> Delete_comment(@PathVariable int comment_pk) throws Exception {
-    System.out.println("****************delete_comment Controller**********************");
     commentservice.Delete_comment(comment_pk);
     String message = "delete comment";
     return new ResponseEntity<String>(message, HttpStatus.OK);
