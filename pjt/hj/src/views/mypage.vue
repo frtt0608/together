@@ -87,10 +87,6 @@
                 <span>Edit Userinfo</span>
               </v-btn>
               <Editpassword></Editpassword>
-              <!-- <v-btn flat color="grey" @click="submit()">
-              <v-icon small left>edit</v-icon>
-              <span>Edit Password</span>
-              </v-btn>-->
             </v-card-actions>
           </v-form>
         </v-card>
@@ -143,7 +139,6 @@ export default {
 
       axios.post(url)
         .then(res => {
-          console.log(res.data)
           this.user.email = res.data.email
           this.user.name = res.data.name
           this.user.nickname = res.data.nickname

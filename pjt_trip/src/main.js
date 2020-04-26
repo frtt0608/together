@@ -10,7 +10,7 @@ import 'expose-loader?$!expose-loader?jQuery!jquery'
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-Vue.use(VeeValidate) // add
+Vue.use(VeeValidate)
 Vue.use(Vuetify)
 Vue.config.productionTip = false
 

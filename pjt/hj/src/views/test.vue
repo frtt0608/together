@@ -36,9 +36,6 @@ export default {
     },
     setMap(){
       navigator.geolocation.getCurrentPosition((position) =>{
-        // this.lat=position.coords.latitude;
-        // this.lon=position.coords.longitude;
-        // console.log(position.coords.latitude)
         var container = document.getElementById('map');
         var mapOptions = {
         // center: new daum.maps.LatLng(36.3549777,127.2961516),

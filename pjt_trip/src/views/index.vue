@@ -1,25 +1,6 @@
 <template>
   <div v-bind:style="{ backgroundImage: `url(${backgroundImage})`}">
-    <!-- <div v-for="weather in index.props.weather.type">{{weather.info}}</div> -->
     <Header></Header>
-
-    <!-- 예전 날씨 -->
-    <!-- <div class="font_Gaegu" style="height:200px;">
-      <v-btn
-        @mouseover="weather_btn = !weather_btn"
-        style="background-color: #ffffff; height: 40px; background-color: rgba( 255, 255, 255, 0 );"
-        flat="flase"
-      >{{index.props.weather.type[0].info}}</v-btn>
-      <p style="font-size:20px; margin-left:30px;">
-        {{index.props.now}}
-        <br />
-        {{index.props.city}}
-      </p>
-      <p
-        v-for="weather in index.props.weather.type"
-        v-if="weather_btn"
-      >{{weather.info}} {{ weather.date }} {{weather.time}}</p>
-    </div>-->
 
     <!-- 날씨...  -->
     <v-container grid-list-xs style="height:600px; margin-left:50px">
@@ -105,32 +86,23 @@ export default {
   },
   methods: {
     searchWeather () {
-      // console.log(index.props.lat+' '+ index.props.lon);
       const key = 'ed959cca83201f4e7425e15ef3ff3bbe'
       const K = 'http://api.openweathermap.org/data/2.5/forecast?lat=' + index.props.lat + '&lon=' + index.props.lon + '&appid='
       const url = K + key
 
       // 출력형태 Tue Feb 07 2017 23:25:32 GMT+0900 (KST)
       var d = new Date()
-      // console.log(d.getHours())
-      // console.log(String(d.getHours()))
       var st_date = new Date().toISOString().substr(0, 10).replace('T', ' ')
       index.props.now = d.toISOString().substr(0, 11).replace('T', ' ')
-      // console.log(st_date)
-      // console.log(url)
       axios.get(url)
         .then((response) => {
           console.log(response)
-          // console.log(response.data.city.name)
-          // index.weather.city=response.data.city.name
           index.props.city = response.data.city.name
 
           response.data.list.forEach(function (weather) {
-            // console.log(Number(weather.dt_txt.substr(-8).substr(0,2)))
             if (weather.dt_txt.substr(0, 10) === st_date && d.getHours() > Number(weather.dt_txt.substr(-8).substr(0, 2))) { } else {
               if (Number(weather.dt_txt.substr(-8).substr(0, 2)) === 3 || Number(weather.dt_txt.substr(-8).substr(0, 2)) === 9 ||
                 Number(weather.dt_txt.substr(-8).substr(0, 2)) === 15 || Number(weather.dt_txt.substr(-8).substr(0, 2)) === 21) { } else {
-                // console.log(weather.dt_txt.substr(0,10),weather.dt_txt.substr(-8).substr(0,2)+'시', weather.weather[0].description)
                 (index.props.weather.type).push({
                   date: weather.dt_txt.substr(5, 6),
                   time: weather.dt_txt.substr(-8).substr(0, 2) + '시',
@@ -144,19 +116,13 @@ export default {
           console.log(index.props.weather.type)
           index.props.forecast = index.props.weather.type.slice(0, 5)
           console.log(index.props.forecast)
-
-          // // icon 가져오기
-          // index.props.w_icon = 'http://openweathermap.org/img/wn/' + index.props.weather.type[0].icon + '@2x.png'
         })
     },
     getLocation () {
       if (navigator.geolocation) { // GPS를 지원하면
         navigator.geolocation.getCurrentPosition(function (position) {
-          // console.log(position.coords.latitude + ' ' + position.coords.longitude);
           index.props.lat = position.coords.latitude
           index.props.lon = position.coords.longitude
-          // console.log(index.lat+' '+ index.lon);
-          // console.log(index.methods)
           index.methods.searchWeather()
         }, function (error) {
           console.error(error)

@@ -7,7 +7,6 @@
        <td v-html="topic_notices.border_pk"></td>   <td  v-html="topic_notices.title"></td>  <td  v-html="topic_notices.name"></td> <td  v-html="topic_notices.hits"></td>
      </tr>
      <tr>
-       <!-- <td v-html="board.title"><router-link :to="{ name: 'freedetail', params: {id : board.id} }"></router-link></td> -->
        <td></td><td  v-html="topic_notices.content"></td>
      </tr>
      </tbody>
@@ -55,14 +54,12 @@ table.freetable {
    margin : 20px 10px;
 }
 table.freetable th {
-   /* width: 20%; */
    padding: 10px;
    font-weight: bold;
    vertical-align: top;
    border-bottom: 1px solid #ccc;
 }
 table.freetable td {
-   /* width: 20%; */
    padding: 10px;
    vertical-align: top;
    border-bottom: 1px solid #ccc;

@@ -3,16 +3,9 @@
     <h1 class="my-5 text-xs-center">
       {{this.$session.get('lo').nickname}}님은{{lat}} 현재 {{Traveling.props.city}}에서 여행중이시네요!
     </h1>
-
-    <!-- --------------------------------------------- -->
-    <!-- --------------------------------------------- -->
-    <!-- --------------------------------------------- -->
     <h1>{{index.props.lat}}</h1>
     <h1>{{index.props.lon}}</h1>
     <h1>{{index.props.weather.type[0].info}}</h1>
-    <!-- --------------------------------------------- -->
-    <!-- --------------------------------------------- -->
-    <!-- --------------------------------------------- -->
 
     <v-container>
       <v-layout wrap align-center>
@@ -171,9 +164,6 @@ export default {
       this.load=true
       this.trip_inform = []
       console.log(area,type)
-      // var url='http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?ServiceKey='
-      // var key='rbssLvuPaumnRlgRCPsgU5IeLlHAf5nHHGU8P3JVSYqJvgSFL8l%2FJbCYNE9zVd5Je%2BFoFlSBFo%2Fochd7h97a%2Fg%3D%3D'
-      // var URL= url+key+'&MobileOS=ETC&MobileApp=AppTest&areaCode='
       //지역 선택할 경우
       if (area !== ''){
         for(let [key, value] of Object.entries(this.areas)){
@@ -210,30 +200,29 @@ export default {
                           }
                         }
                       }
-                    }//리스트저장for문
+                    }
                     
                     console.log(list_restype)
                     this.trip_inform=list_restype //뿌려줄 vue data에 저장한다.
                     this.load=false
                     PaginatedList.props.pageNum.type=0
-                  }//if(type === value)
-                }//types for문
-              }//테마선택한 else if
-            })//axios
+                  }
+                }
+              }
+            })
             
             .catch(err => {
               console.log(err);
-            })//.catch
-          }//if(area === value)
-        }//area for문
-      } else if(type === '대분류 선택') { //지역 선택안할 경우, 선택하라고 알람
+            })
+          }
+        }
+      } else if(type === '대분류 선택') {
         alert('테마를 선택 안하셨네요! 지역기반으로 추천해드려요~')
       }
     },
     
     informDust(city){
       console.log(city)
-      //pm25Grade1h = { 1: '좋음', 2: '보통', 3: '나쁨', 4: '매우나쁨'} //1시간마다 미세먼지,
       var table = { 0: '매우좋음', 1: '좋음', 2: '보통', 3: '나쁨', 4: '매우나쁨'}
       var data = [0,1,2,3,4]
       console.log(city)
@@ -266,16 +255,16 @@ export default {
         for (var i = 0; i < data.length; i++){
           abs10 = ((data[i] - num10) < 0) ? -(data[i] - num10) : (data[i] - num10);
           if (abs10 < min10){
-            min10 = abs10; //MIN
-            near10 = data[i] //near : 가까운값
+            min10 = abs10;
+            near10 = data[i]
           }
         }
 
         for (var i = 0; i < data.length; i++){
           abs25 = ((data[i] - num25) < 0) ? -(data[i] - num25) : (data[i] - num25);
           if (abs25 < min25) {
-            min25 = abs25; //MIN
-            near25 = data[i] //near : 가까운값
+            min25 = abs25;
+            near25 = data[i]
           }
         }
 
@@ -287,8 +276,8 @@ export default {
         
         console.log(this.mise_inform)
         this.givedust(city);
-      })//axios 미세먼지
-    },//informDust함수
+      })
+    },
     
     givedust(area) {
       this.mise_click= true
@@ -322,7 +311,6 @@ export default {
       
       if (area !== ''){
         for(let [key, value] of Object.entries(this.areas)) {
-          //선택한 지역 분류data에서 번호 불러오기
           if(area === value){
             var spring_url = 'http://192.168.31.84:8080/api/post/areacode/'+key
             axios.get(spring_url).then((res)=>{
@@ -331,7 +319,6 @@ export default {
               for(var [index,informs] of Object.entries(res.data)) {
                 if(this.mise_inform['pm10'] <= 2) {
                   if ( (informs.cat3) in cat3_lists_nomise) {
-                    // console.log(informs)
                     this.trip_inform.push(informs)
                   }
                 } else {
@@ -341,9 +328,9 @@ export default {
                 }
               }
             });
-          }//area==value if
-        }// area for문 key value
-      }//area if
+          }
+        }
+      }
 
     },
     
@@ -362,8 +349,6 @@ export default {
       var d = index.props.weather.type[0].info.indexOf("drizzle");
       var s = index.props.weather.type[0].info.indexOf("snow");
       console.log(r+" "+d+" "+s);
-
-      // -------------------------------------------------------
 
       var c = index.props.weather.type[0].info.indexOf("clear");
       var h = index.props.weather.type[0].info.indexOf("haze");
@@ -418,9 +403,6 @@ export default {
       this.mise_click = false
       this.click_thema = false
       this.load = true
-      // this.type = '대분류 선택'
-
-      // alert(index.props.lat+" "+index.props.lon)
 
       var url = 'http://192.168.31.84:8080/api/FindHospital/' + index.props.lon + '/' + index.props.lat
       console.log(url)

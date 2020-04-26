@@ -19,10 +19,9 @@
        </tr>
      </thead>
      <tbody>
-     <tr v-for="board in sortedData">
+     <tr v-for="board in sortedData" :key="board">
        <td v-html="board.border_pk"></td>
        <td v-html="board.title" @click="showDetail(board)"></td>
-       <!-- <td v-html="board.title"><router-link :to="{ name: 'freedetail', params: {id : board.id} }"></router-link></td> -->
        <td v-html="board.name"></td>
        <td v-html="board.created_at"></td>
        <td v-html="board.hits"></td>
@@ -63,21 +62,14 @@ export default {
     topic_notices : []
      }
    },
-   created() {
-     // alert(this.topic);
-   },
    methods : {
      boardwrite() {
        this.$router.push({name:'freewrite'});
-       // this.$router.push({name:"write"});
      },
      showDetail(board) {
-       // this.$router.push({path: ${this.topic}/detail/${board.id}, params: { info : board}});
        this.$router.push({name: 'freedetail' , params: { id: board.border_pk}});
      },
      newest: function() {
-       // Set slice() to avoid to generate an infinite loop!
-       // alert("newest")
        this.isNew = true
        if(this.newtoggle) {
            this.newtoggle = false;
@@ -141,14 +133,12 @@ table.freetable {
    margin : 20px 10px;
 }
 table.freetable th {
-   /* width: 20%; */
    padding: 10px;
    font-weight: bold;
    vertical-align: top;
    border-bottom: 1px solid #ccc;
 }
 table.freetable td {
-   /* width: 20%; */
    padding: 10px;
    vertical-align: top;
    border-bottom: 1px solid #ccc;

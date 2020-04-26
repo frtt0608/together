@@ -28,12 +28,6 @@
           </div>
         </v-expand-transition>
            </v-img>
-              <!-- <img :src="p.image" @mouseover="mouseOver" class="full"
-              style="filter: grayscale(1) contrast(1.1) brightness(1.1) ;" >
-            </img> -->
-               <!-- <p style="padding-top:3px; color:grey; font-size:20px; text-align: center; letter-spacing: 2px;" class="mb-0 target">{{p.title}}</p>
-               <div>
-               <p style="color:grey; font-size:15px; text-align: center; ">{{p.address}}</p></div><v-spacer></v-spacer> -->
           </v-card>
           </v-btn>
         </v-hover>

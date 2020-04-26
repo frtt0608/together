@@ -72,7 +72,6 @@
           </v-img>
         </v-flex>
       </v-layout></v-container>
-      <!-- <v-card-title v-else>I'm a title</v-card-title> -->
         <v-container>
         <v-rating
            :value="score_AVG"
@@ -86,11 +85,11 @@
       <v-card-text>{{cat3_lists[detail_form.cat3]}}</v-card-text>
 
       <template>
-      <div v-if="score_click === false "class="text-center">
+      <div v-if="score_click === false" class="text-center">
         <v-rating v-model="rating"></v-rating>
         <v-btn @click="score_fun">평점 선택</v-btn>
       </div>
-      <div v-if="score_click"class="text-center">
+      <div v-if="score_click" class="text-center">
         <h3>{{rating}}점을 평가하셨습니다</h3>
         <v-btn @click="score_fun">다시 평가하기</v-btn>
       </div>
@@ -181,11 +180,6 @@ export default {
                  map: map,
                  position: coords
              });
-             // 인포윈도우로 장소에 대한 설명을 표시합니다
-             // var infowindow = new kakao.maps.InfoWindow({
-             //     content: '<div style="width:150px;text-align:center;padding:6px 0;">'++'</div>'
-             // });
-             // infowindow.open(map, marker);
              marker.setMap(map);
              // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
        console.log(coords)

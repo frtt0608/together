@@ -49,8 +49,8 @@
                       @click="start_to(1)"
                       required
                     ></v-text-field>
-                    <v-text-field v-if="start_toggle" @click="end_to()"label="end" type="date" v-model="end" data-vv-name="end" required></v-text-field>
-                      <v-text-field v-if="end_toggle" @click="stime_to()"label="출발시각" type="time" v-model="s_time" data-vv-name="end" required></v-text-field>
+                    <v-text-field v-if="start_toggle" @click="end_to()" label="end" type="date" v-model="end" data-vv-name="end" required></v-text-field>
+                      <v-text-field v-if="end_toggle" @click="stime_to()" label="출발시각" type="time" v-model="s_time" data-vv-name="end" required></v-text-field>
                         <v-text-field v-if="stime_toggle"  @click="reset_to()" label="도착시각" type="time" v-model="e_time" data-vv-name="end" required></v-text-field>
 
                   </form>
@@ -158,10 +158,7 @@ export default {
       this.post = items
     },
     setpost () {
-      // this.trip_inform=[];
-
       this.setschedule()
-      // this.trip_inform.push(this.post);
     },
     setschedule () {
       var url = 'http://192.168.43.242:8080/api/schedule/add'

@@ -1,5 +1,5 @@
 <template>
-
+<div>
   <v-container fluid>
     <v-layout wt align-center justify-center style="padding-bottom:2%">
       <p style="font-size: 60px;">Sign up</p>
@@ -15,60 +15,57 @@
 
           <v-card-text>
             <form>
-                        <v-text-field
-                           v-validate="'required|min:4|max:30'"
-                          label="Email address"
-                          type='text'
-                          :error-messages="errors.collect('email')"
-                          v-model="form.email"
-                          suffix="@gmail.com"
-                          data-vv-name="email"
-                          required
-                        ></v-text-field>
-                        <div v-if="this.message !=' ' ">
+              <v-text-field
+                v-validate="'required|min:4|max:30'"
+                label="Email address"
+                type='text'
+                :error-messages="errors.collect('email')"
+                v-model="form.email"
+                suffix="@gmail.com"
+                data-vv-name="email"
+                required
+              ></v-text-field>
+              <div v-if="this.message !=' ' ">
+                <h3>{{this.message}}</h3>
+              </div>
+              <v-text-field
+                  v-validate="'required|min:4|max:49'"
+                label="password"
+                v-model="form.password"
+                type='password'
+                :error-messages="errors.collect('password')"
+                data-vv-name="password"
+                required
+              ></v-text-field>
+              <v-text-field
+                v-validate="'required|min:11|max:13'"
+                label="phone_number"
+                v-model="form.phone_number"
+                :error-messages="errors.collect('phone_number')"
+                data-vv-name="phone_number"
+                suffix="Only number"
+                type='text'
+                required
+              ></v-text-field>
+              <v-text-field
+                v-validate="'required|min:4|max:49'"
+                label="nickname"
+                v-model="form.nickname"
+                type='text'
+                :error-messages="errors.collect('nickname')"
+                data-vv-name="nickname"
+                required
+              ></v-text-field>
 
-                          <h3>{{this.message}}</h3>
+              <v-select
+                v-model="form.select"
+                :items="form.sex"
+                :rules="[v => !!v || 'Item is required']"
+                label="성별"
+                required
+              ></v-select>
 
-                        </div>
-
-                        <v-text-field
-                            v-validate="'required|min:4|max:49'"
-                          label="password"
-                          v-model="form.password"
-                          type='password'
-                          :error-messages="errors.collect('password')"
-                          data-vv-name="password"
-                          required
-                        ></v-text-field>
-                        <v-text-field
-                             v-validate="'required|min:11|max:13'"
-                          label="phone_number"
-                          v-model="form.phone_number"
-                          :error-messages="errors.collect('phone_number')"
-                          data-vv-name="phone_number"
-                          suffix="Only number"
-                          type='text'
-                          required
-                        ></v-text-field>
-                        <v-text-field
-                            v-validate="'required|min:4|max:49'"
-                          label="nickname"
-                          v-model="form.nickname"
-                          type='text'
-                          :error-messages="errors.collect('nickname')"
-                          data-vv-name="nickname"
-                          required
-                        ></v-text-field>
-
-                        <v-select
-                          v-model="form.select"
-                          :items="form.sex"
-                          :rules="[v => !!v || 'Item is required']"
-                          label="성별"
-                          required
-                        ></v-select>
-
-                        <v-checkbox
+              <v-checkbox
                 v-validate="'required'"
                 v-model="form.check"
                 :error-messages="errors.collect('checkbox')"
@@ -78,22 +75,16 @@
                 type="checkbox"
                 required
               ></v-checkbox>
- <v-divider class="mt-12"></v-divider>
- <v-card-actions>
-          <v-btn text @click="chekcid" >이메일 중복 확인</v-btn>
-          <v-spacer></v-spacer>
-          <v-slide-x-reverse-transition>
-
-
-          </v-slide-x-reverse-transition>
-          <v-btn color="primary" text @click="checksign">가입하기</v-btn>
-        </v-card-actions>
-</form>
+            <v-divider class="mt-12"></v-divider>
+            <v-card-actions>
+              <v-btn text @click="chekcid" >이메일 중복 확인</v-btn>
+              <v-spacer></v-spacer>
+              <v-slide-x-reverse-transition>
+              </v-slide-x-reverse-transition>
+                <v-btn color="primary" text @click="checksign">가입하기</v-btn>
+              </v-card-actions>
+            </form>
           </v-card-text>
-
-
-
-
         </v-card>
       </v-flex>
     </v-layout>

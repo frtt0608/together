@@ -123,9 +123,6 @@ export default {
       this.load=true
       tour.props.trip_inform=[]
       console.log(area,type)
-      // var url='http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?ServiceKey='
-      // var key='rbssLvuPaumnRlgRCPsgU5IeLlHAf5nHHGU8P3JVSYqJvgSFL8l%2FJbCYNE9zVd5Je%2BFoFlSBFo%2Fochd7h97a%2Fg%3D%3D'
-      // var URL= url+key+'&MobileOS=ETC&MobileApp=AppTest&areaCode='
       //지역 선택할 경우
       if (area !== '지역 선택'){
         for(let [key, value] of Object.entries(tour.props.areas)){
@@ -166,19 +163,18 @@ export default {
                     tour.props.trip_inform=list_restype //뿌려줄 vue data에 저장한다.
                     this.load=false
                     PaginatedList.props.pageNum.type=0
-                }//if(type === value)
-              }//types for문
-            }//테마선택한 else if
-          })//axios
+                }
+              }
+            }
+          })
             .catch(err => {
               console.log(err);
-            })//.catch
-          }//if(area === value)
-        }//area for문
-      } else if(area === '지역 선택'){ //지역 선택안할 경우, 선택하라고 알람
+            })
+          }
+        }
+      } else if(area === '지역 선택'){
         alert('지역 검색어를 선택해주세요!')
       }
-      // axios.get(URL)
     },
     locate_click(index){
       console.log(index)

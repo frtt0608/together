@@ -32,7 +32,7 @@
                   </v-btn>
                 <v-spacer></v-spacer>
                 <v-slide-x-reverse-transition></v-slide-x-reverse-transition>
-                <v-btn href="http://localhost:8080/#/register" color="primary" text @click>가입하기</v-btn>
+                <v-btn href="http://localhost:8080/#/register" color="primary" text>가입하기</v-btn>
               </v-card-actions>
             </form>
           </v-card-text>
@@ -86,7 +86,6 @@ export default {
             this.id = this.$session.get('lo')
             console.log(this.$session.get('lo'))
             this.$router.push('/')
-            // alert(this.id)
           }
           console.log('response : ', JSON.stringify(response, null, 2))
         }).catch(error => {

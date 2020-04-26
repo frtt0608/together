@@ -35,9 +35,6 @@ export default {
     },
     setMap() {
       navigator.geolocation.getCurrentPosition((position) => {
-        // this.lat=position.coords.latitude;
-        // this.lon=position.coords.longitude;
-        // console.log(position.coords.latitude)
         var container = document.getElementById('map');
         var mapOptions = {
         // center: new daum.maps.LatLng(36.3549777,127.2961516),
@@ -87,15 +84,12 @@ export default {
                    if(result[i].region_type === 'H') {
                      info = result[i].address_name;
                      if(info[2] == '특' || info[2] == '광') {
-                              // console.log(infoDiv.innerHTML[0]+infoDiv.innerHTML[1])
                               info = info[0]+info[1];
                               // 서울 인천 대전 대구 광주 부산 울산 세종 제주
                         } else if(info[2] == '도') {
-                              // console.log(infoDiv.innerHTML[0]+infoDiv.innerHTML[1])
                               info = info[0]+info[1];
                               // 경기 강원
                         } else if(info[3] == '도') {
-                              // console.log(infoDiv.innerHTML[0]+infoDiv.innerHTML[2])
                               info = info[0]+info[2];
                               // 충북 충남 경북 경남 전북 전남
                         }

@@ -87,10 +87,6 @@
                 <span>Edit Userinfo</span>
               </v-btn>
               <Editpassword></Editpassword>
-              <!-- <v-btn flat color="grey" @click="submit()">
-              <v-icon small left>edit</v-icon>
-              <span>Edit Password</span>
-              </v-btn>-->
             </v-card-actions>
           </v-form>
         </v-card>
