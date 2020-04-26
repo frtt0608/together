@@ -8,7 +8,7 @@
   > git clone https://lab.ssafy.com/dongmin/together.git
   ```
 
-- 프로젝트 폴더을 열고, pjt_trip 폴더를 Atom 또는 VS code로 실행시킵니다.
+- 프로젝트 폴더을 열고, Frontend_Vue.js 폴더를 Atom 또는 VS code로 실행시킵니다.
 
 - 실행한 에디터의 터미널에서 노드 패키지 모듈을 설치합니다.
 
