@@ -19,8 +19,8 @@ public class BorderDto {
 		this.title = title;
 		this.content = content;
 		this.name = name;
-    this.hits = hits;
-    this.created_at = created_at;
+   		this.hits = hits;
+    	this.created_at = created_at;
 	}
 	
 	public int getborder_pk() {

@@ -32,7 +32,6 @@ public class ImageController {
 	
 	@RequestMapping(value = "/SearchImage/{text}", method = RequestMethod.GET)
 	public ResponseEntity<List<ImageDto>> SearchImage(@PathVariable String text){
-		Logger.info("*************************SearchImage ImageController******************************");
 		List<ImageDto> lists = imageservice.getInfo(text);
 		
 		return new ResponseEntity<List<ImageDto>>(lists, HttpStatus.OK);
